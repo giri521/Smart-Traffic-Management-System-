@@ -881,7 +881,7 @@ if __name__ == '__main__':
     load_models()
     start_signal_controller()
 
-    port = int(os.environ.get("PORT", 10000))  # Render provides PORT
+    port = int(os.environ.get("PORT", 10000))
 
     app.run(
         host='0.0.0.0',
@@ -889,3 +889,4 @@ if __name__ == '__main__':
         debug=False,
         threaded=True
     )
+
