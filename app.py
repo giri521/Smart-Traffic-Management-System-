@@ -875,23 +875,17 @@ def cleanup():
 
 # Register cleanup function
 atexit.register(cleanup)
-
 if __name__ == '__main__':
-    # Create uploads directory if it doesn't exist
     os.makedirs('uploads', exist_ok=True)
-    
-    # Load models
+
     load_models()
-    
-    # Start the continuous signal controller thread
-    # This runs FOREVER independent of detection
     start_signal_controller()
-    
-    # Run Flask app
+
+    port = int(os.environ.get("PORT", 10000))  # Render provides PORT
+
     app.run(
         host='0.0.0.0',
-        port=5000,
-        debug=True,
-        use_reloader=True,
+        port=port,
+        debug=False,
         threaded=True
     )
